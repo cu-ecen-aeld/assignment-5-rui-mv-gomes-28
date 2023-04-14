@@ -16,8 +16,9 @@ bool do_system(const char *cmd)
  *   and return a boolean true if the system() call completed with success
  *   or false() if it returned a failure
 */
-
-    return true;
+	//printf("===>> command to test %s <<====\n", cmd);
+	int ret = system(cmd);
+    return (ret==0) ? true : false;
 }
 
 /**
@@ -40,6 +41,8 @@ bool do_exec(int count, ...)
     va_start(args, count);
     char * command[count+1];
     int i;
+    pid_t child_pid;
+    
     for(i=0; i<count; i++)
     {
         command[i] = va_arg(args, char *);
@@ -58,9 +61,35 @@ bool do_exec(int count, ...)
  *   as second argument to the execv() command.
  *
 */
-
+	fflush(stdout);
+	child_pid = fork();
+	if(child_pid == -1){
+		//printf("======> [2] Fail to create fork\n");
+		return false;
+		
+	}else if(child_pid == 0){
+		execv(command[0], command);	//fails if get out		
+		//printf("======> [2] Fail on execv\n");
+		exit(-1);		
+		
+	}else{
+		int status, child_wait;
+		child_wait = waitpid(child_pid, &status, 0) ;
+		if(child_wait == 1){
+			//printf("======> [2] Fail on wait\n");
+			return false;
+		}else if(WIFEXITED(status)){
+			if(WEXITSTATUS(status) != 0){
+				return false;
+			}else{
+				return true;
+			}						
+		}else{
+			//printf("======> [3] Error on wait status\n");
+			return false;			
+		}
+	}
     va_end(args);
-
     return true;
 }
 
@@ -75,6 +104,7 @@ bool do_exec_redirect(const char *outputfile, int count, ...)
     va_start(args, count);
     char * command[count+1];
     int i;
+    
     for(i=0; i<count; i++)
     {
         command[i] = va_arg(args, char *);
@@ -92,8 +122,47 @@ bool do_exec_redirect(const char *outputfile, int count, ...)
  *   The rest of the behaviour is same as do_exec()
  *
 */
-
+	fflush(stdout);
+	pid_t child_pid;
+	int fd = open(outputfile, O_WRONLY|O_TRUNC|O_CREAT, 0644);
+	if(fd < 0){
+		printf("======> [3] Error on open file %s\n", outputfile);
+		return false;
+	}
+		
+	child_pid = fork();
+	if(child_pid == -1){
+		printf("======> [3] Fail to create fork\n");
+		return false;
+		
+	}else if(child_pid == 0){
+		if(dup2(fd, 1) < 0){
+			printf("======> [3] Error on file descriptor\n");
+			return false;
+		}
+		close(fd);
+		//printf("======> [3] command: %s\n", command[0]);
+		execv(command[0], command);	//fails if get out		
+		printf("======> [3] Fail on execv\n");
+		return false;	
+		
+	}else{
+		int status, child_wait;
+		child_wait = waitpid(child_pid, &status, 0) ;
+		if(child_wait == 1){
+			//printf("======> [3] Fail on wait\n");
+			return false;
+		}else if(WIFEXITED(status)){
+			if(WEXITSTATUS(status) != 0){
+				return false;
+			}else{
+				return true;
+			}						
+		}else{
+			//printf("======> [3] Error on wait status\n");
+			return false;			
+		}
+	}	
     va_end(args);
-
     return true;
 }
