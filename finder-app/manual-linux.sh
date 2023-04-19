@@ -111,9 +111,10 @@ cp "$FINDER_APP_DIR/finder.sh" "${OUTDIR}/rootfs/home"
 cp "$FINDER_APP_DIR/finder-test.sh" "${OUTDIR}/rootfs/home"
 cp "$FINDER_APP_DIR/finder-test.sh" "${OUTDIR}/rootfs/home"
 mkdir "${OUTDIR}/rootfs/home/conf"
-cp "$FINDER_APP_DIR/conf/username.txt" "${OUTDIR}/rootfs/conf"
-cp "$FINDER_APP_DIR/conf/assignment.txt" "${OUTDIR}/rootfs/conf"
+cp "$FINDER_APP_DIR/conf/username.txt" "${OUTDIR}/rootfs/home/conf"
+cp "$FINDER_APP_DIR/conf/assignment.txt" "${OUTDIR}/rootfs/home/conf"
 cp "$FINDER_APP_DIR/autorun-qemu.sh" "${OUTDIR}/rootfs/home/"
+
 
 # TODO: Chown the root directory
 cd "${OUTDIR}/rootfs"
