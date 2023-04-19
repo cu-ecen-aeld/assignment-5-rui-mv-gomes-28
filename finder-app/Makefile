@@ -3,12 +3,12 @@ APP = writer
 
 # Compiler
 CXX = $(CROSS_COMPILE)gcc
-
-ifeq ($(CROSS_COMPILE), )
-	CXXFLAGS = -Wall -Wextra 
-else
-	CXXFLAGS = aarch64-none-linux-gnu- -Wall -Wextra -pedantic
-endif
+CXXFLAGS = -Wall -Wextra 
+#ifeq ($(CROSS_COMPILE), )
+#	CXXFLAGS = -Wall -Wextra 
+#else
+#	CXXFLAGS = aarch64-none-linux-gnu- -Wall -Wextra -pedantic
+#endif
 
 
 
