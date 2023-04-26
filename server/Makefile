@@ -3,9 +3,9 @@ APP = aesdsocket
 
 # Compiler
 CXX = $(CROSS_COMPILE)gcc
-CXXFLAGS = -Wall -Wextra 
-#ifeq ($(CROSS_COMPILE), ) -Werror 
-#	CXXFLAGS = -Wall -Wextra 
+CXXFLAGS = -Wall  -Wextra 
+#ifeq ($(CROSS_COMPILE), )  
+#	CXXFLAGS = -Wall -Wextra  -Werror
 #else
 #	CXXFLAGS = aarch64-none-linux-gnu- -Wall -Wextra -pedantic
 #endif

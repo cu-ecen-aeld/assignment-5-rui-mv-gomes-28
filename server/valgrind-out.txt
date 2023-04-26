@@ -1,0 +1,1153 @@
+==6784== Memcheck, a memory error detector
+==6784== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==6784== Using Valgrind-3.18.1-42b08ed5bd-20211015 and LibVEX; rerun with -h for copyright info
+==6784== Command: ./aesdsocket
+==6784== Parent PID: 6782
+==6784== 
+--6784-- 
+--6784-- Valgrind options:
+--6784--    --error-exitcode=1
+--6784--    --leak-check=full
+--6784--    --show-leak-kinds=all
+--6784--    --track-origins=yes
+--6784--    --errors-for-leak-kinds=definite
+--6784--    --verbose
+--6784--    --log-file=valgrind-out.txt
+--6784-- Contents of /proc/version:
+--6784--   Linux version 5.19.0-40-generic (buildd@lcy02-amd64-047) (x86_64-linux-gnu-gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, GNU ld (GNU Binutils for Ubuntu) 2.38) #41~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Mar 31 16:00:14 UTC 2
+--6784-- 
+--6784-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-rdrand-rdseed
+--6784-- Page sizes: currently 4096, max supported 4096
+--6784-- Valgrind library directory: /usr/libexec/valgrind
+--6784-- Reading syms from /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket
+--6784-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+--6784--   Considering /usr/lib/debug/.build-id/61/ef896a699bb1c2e4e231642b2e1688b2f1a61e.debug ..
+--6784--   .. build-id is valid
+--6784-- Reading syms from /usr/libexec/valgrind/memcheck-amd64-linux
+--6784--    object doesn't have a symbol table
+--6784--    object doesn't have a dynamic symbol table
+--6784-- Scheduler: using generic scheduler lock implementation.
+--6784-- Reading suppressions file: /usr/libexec/valgrind/default.supp
+==6784== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-6784-by-ruigomes-on-???
+==6784== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-6784-by-ruigomes-on-???
+==6784== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-6784-by-ruigomes-on-???
+==6784== 
+==6784== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==6784== don't want to do, unless you know exactly what you're doing,
+==6784== or are doing some strange experiment):
+==6784==   /usr/bin/vgdb --pid=6784 ...command...
+==6784== 
+==6784== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==6784==   /path/to/gdb ./aesdsocket
+==6784== and then give GDB the following command
+==6784==   target remote | /usr/bin/vgdb --pid=6784
+==6784== --pid is optional if only one valgrind process is running
+==6784== 
+--6784-- REDIR: 0x402aa60 (ld-linux-x86-64.so.2:strlen) redirected to 0x580bcec2 (???)
+--6784-- REDIR: 0x402a830 (ld-linux-x86-64.so.2:index) redirected to 0x580bcedc (???)
+--6784-- Reading syms from /usr/libexec/valgrind/vgpreload_core-amd64-linux.so
+--6784--    object doesn't have a symbol table
+--6784-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so
+--6784--    object doesn't have a symbol table
+==6784== WARNING: new redirection conflicts with existing -- ignoring it
+--6784--     old: 0x0402aa60 (strlen              ) R-> (0000.0) 0x580bcec2 ???
+--6784--     new: 0x0402aa60 (strlen              ) R-> (2007.0) 0x0484ee30 strlen
+--6784-- REDIR: 0x4027240 (ld-linux-x86-64.so.2:strcmp) redirected to 0x484fcd0 (strcmp)
+--6784-- REDIR: 0x402afc0 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4853840 (mempcpy)
+--6784-- Reading syms from /usr/lib/x86_64-linux-gnu/libc.so.6
+--6784--   Considering /usr/lib/debug/.build-id/69/389d485a9793dbe873f0ea2c93e02efaa9aa3d.debug ..
+--6784--   .. build-id is valid
+==6784== WARNING: new redirection conflicts with existing -- ignoring it
+--6784--     old: 0x04912ce0 (memalign            ) R-> (1011.0) 0x0484e080 memalign
+--6784--     new: 0x04912ce0 (memalign            ) R-> (1017.0) 0x0484e050 aligned_alloc
+==6784== WARNING: new redirection conflicts with existing -- ignoring it
+--6784--     old: 0x04912ce0 (memalign            ) R-> (1011.0) 0x0484e080 memalign
+--6784--     new: 0x04912ce0 (memalign            ) R-> (1017.0) 0x0484e020 aligned_alloc
+==6784== WARNING: new redirection conflicts with existing -- ignoring it
+--6784--     old: 0x04912ce0 (memalign            ) R-> (1011.0) 0x0484e080 memalign
+--6784--     new: 0x04912ce0 (memalign            ) R-> (1017.0) 0x0484e050 aligned_alloc
+==6784== WARNING: new redirection conflicts with existing -- ignoring it
+--6784--     old: 0x04912ce0 (memalign            ) R-> (1011.0) 0x0484e080 memalign
+--6784--     new: 0x04912ce0 (memalign            ) R-> (1017.0) 0x0484e020 aligned_alloc
+--6784-- REDIR: 0x49157a0 (libc.so.6:strnlen) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4915a60 (libc.so.6:strpbrk) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4915360 (libc.so.6:strcmp) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4933d50 (libc.so.6:wcsnlen) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4916750 (libc.so.6:memset) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x49325c0 (libc.so.6:wcslen) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4916c90 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x49323f0 (libc.so.6:wcschr) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x49152e0 (libc.so.6:index) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x49159e0 (libc.so.6:rindex) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4916620 (libc.so.6:memmove) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+==6784== Preferring higher priority redirection:
+--6784--     old: 0x04a0d940 (__memcpy_avx_unalign) R-> (2018.0) 0x04850f90 __memcpy_avx_unaligned_erms
+--6784--     new: 0x04a0d940 (__memcpy_avx_unalign) R-> (2018.1) 0x04852880 memmove
+--6784-- REDIR: 0x4932470 (libc.so.6:wcscmp) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4916a60 (libc.so.6:stpncpy) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4932a30 (libc.so.6:wmemchr) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x49158b0 (libc.so.6:strncmp) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4916af0 (libc.so.6:strcasecmp) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x49154a0 (libc.so.6:strcspn) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x49324f0 (libc.so.6:wcscpy) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4915250 (libc.so.6:strcat) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4916be0 (libc.so.6:strncasecmp_l) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4916500 (libc.so.6:bcmp) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x491e5f0 (libc.so.6:memrchr) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4918090 (libc.so.6:strchrnul) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4915410 (libc.so.6:strcpy) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4916b90 (libc.so.6:strcasecmp_l) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4915720 (libc.so.6:strlen) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4915950 (libc.so.6:strncpy) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x49169d0 (libc.so.6:stpcpy) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4916470 (libc.so.6:memchr) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4915b80 (libc.so.6:strspn) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4916850 (libc.so.6:mempcpy) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4916b40 (libc.so.6:strncasecmp) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4918000 (libc.so.6:rawmemchr) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--6784-- REDIR: 0x4a0a790 (libc.so.6:__strrchr_avx2) redirected to 0x484e810 (rindex)
+--6784-- REDIR: 0x4a0e100 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x4852770 (memset)
+--6784-- REDIR: 0x4912120 (libc.so.6:malloc) redirected to 0x4848820 (malloc)
+--6784-- REDIR: 0x4916040 (libc.so.6:__GI_strstr) redirected to 0x4853ae0 (__strstr_sse2)
+--6784-- REDIR: 0x4912460 (libc.so.6:free) redirected to 0x484b210 (free)
+--6784-- REDIR: 0x4a0a960 (libc.so.6:__strlen_avx2) redirected to 0x484ed10 (strlen)
+--6784-- REDIR: 0x4a0d900 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4853440 (mempcpy)
+--6784-- REDIR: 0x4a0a580 (libc.so.6:__strchrnul_avx2) redirected to 0x4853330 (strchrnul)
+--6784-- REDIR: 0x49135a0 (libc.so.6:calloc) redirected to 0x484d9d0 (calloc)
+--6784-- REDIR: 0x4a0d940 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x4852880 (memmove)
+--6784-- REDIR: 0x4a06c00 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x4852010 (bcmp)
+--6784-- REDIR: 0x4a05ac0 (libc.so.6:__strcmp_avx2) redirected to 0x484fbd0 (strcmp)
+--6784-- REDIR: 0x49127c0 (libc.so.6:realloc) redirected to 0x484dc50 (realloc)
+==6784== Conditional jump or move depends on uninitialised value(s)
+==6784==    at 0x484ED28: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48ECA98: fputs (iofputs.c:33)
+==6784==    by 0x109A4C: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Uninitialised value was created by a stack allocation
+==6784==    at 0x10955C: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Conditional jump or move depends on uninitialised value(s)
+==6784==    at 0x484ED28: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x109B78: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Uninitialised value was created by a stack allocation
+==6784==    at 0x10955C: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Conditional jump or move depends on uninitialised value(s)
+==6784==    at 0x484ED28: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x109B9B: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Uninitialised value was created by a stack allocation
+==6784==    at 0x10955C: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 4
+==6784==    at 0x48EBCFB: fclose@@GLIBC_2.2.5 (iofclose.c:48)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9140 is 0 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 1
+==6784==    at 0x48FA334: _IO_un_link (genops.c:54)
+==6784==    by 0x48EBDB4: fclose@@GLIBC_2.2.5 (iofclose.c:49)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9140 is 0 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 4
+==6784==    at 0x48EBDB5: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9140 is 0 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 8
+==6784==    at 0x48EBDC6: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab91c8 is 136 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 8
+==6784==    at 0x48EBDCD: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9228 is 232 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 4
+==6784==    at 0x48EBDDA: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9220 is 224 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 8
+==6784==    at 0x48EBDE4: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab91c8 is 136 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 4
+==6784==    at 0x48EBDEB: fclose@@GLIBC_2.2.5 (iofclose.c:52)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9140 is 0 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid write of size 8
+==6784==    at 0x48EBDEE: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9228 is 232 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 4
+==6784==    at 0x48EBDF2: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9224 is 228 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 4
+==6784==    at 0x48F8F18: _IO_file_close_it@@GLIBC_2.2.5 (fileops.c:130)
+==6784==    by 0x48EBE0E: fclose@@GLIBC_2.2.5 (iofclose.c:53)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab91b0 is 112 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 4
+==6784==    at 0x48EBE0F: _IO_acquire_lock_fct (libioP.h:883)
+==6784==    by 0x48EBE0F: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9140 is 0 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 8
+==6784==    at 0x48EBD21: _IO_acquire_lock_fct (libioP.h:884)
+==6784==    by 0x48EBD21: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab91c8 is 136 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 4
+==6784==    at 0x48EBD28: _IO_acquire_lock_fct (libioP.h:884)
+==6784==    by 0x48EBD28: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9224 is 228 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid write of size 8
+==6784==    at 0x48EBE20: _IO_acquire_lock_fct (libioP.h:884)
+==6784==    by 0x48EBE20: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9228 is 232 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 4
+==6784==    at 0x48EBE28: _IO_acquire_lock_fct (libioP.h:884)
+==6784==    by 0x48EBE28: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9220 is 224 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 8
+==6784==    at 0x48EBD32: fclose@@GLIBC_2.2.5 (iofclose.c:57)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9218 is 216 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 4
+==6784==    at 0x48F907D: _IO_file_finish@@GLIBC_2.2.5 (fileops.c:169)
+==6784==    by 0x48EBD60: fclose@@GLIBC_2.2.5 (iofclose.c:57)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab91b0 is 112 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 8
+==6784==    at 0x48FB7B8: _IO_default_finish (genops.c:603)
+==6784==    by 0x48EBD60: fclose@@GLIBC_2.2.5 (iofclose.c:57)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9178 is 56 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 8
+==6784==    at 0x48FB7C7: _IO_default_finish (genops.c:609)
+==6784==    by 0x48EBD60: fclose@@GLIBC_2.2.5 (iofclose.c:57)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab91a0 is 96 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 8
+==6784==    at 0x48FB7E0: _IO_default_finish (genops.c:612)
+==6784==    by 0x48EBD60: fclose@@GLIBC_2.2.5 (iofclose.c:57)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9188 is 72 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 1
+==6784==    at 0x48FB7F6: _IO_un_link (genops.c:54)
+==6784==    by 0x48FB7F6: _IO_default_finish (genops.c:618)
+==6784==    by 0x48EBD60: fclose@@GLIBC_2.2.5 (iofclose.c:57)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9140 is 0 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 4
+==6784==    at 0x48EBD61: fclose@@GLIBC_2.2.5 (iofclose.c:58)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9200 is 192 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid read of size 8
+==6784==    at 0x48EBD6F: fclose@@GLIBC_2.2.5 (iofclose.c:71)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9188 is 72 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== Invalid free() / delete / delete[] / realloc()
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9140 is 0 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== HEAP SUMMARY:
+==6784==     in use at exit: 0 bytes in 0 blocks
+==6784==   total heap usage: 68 allocs, 69 frees, 162,242 bytes allocated
+==6784== 
+==6784== All heap blocks were freed -- no leaks are possible
+==6784== 
+==6784== ERROR SUMMARY: 87 errors from 28 contexts (suppressed: 0 from 0)
+==6784== 
+==6784== 1 errors in context 1 of 28:
+==6784== Invalid free() / delete / delete[] / realloc()
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9140 is 0 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 2 of 28:
+==6784== Invalid read of size 8
+==6784==    at 0x48EBD6F: fclose@@GLIBC_2.2.5 (iofclose.c:71)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9188 is 72 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 3 of 28:
+==6784== Invalid read of size 4
+==6784==    at 0x48EBD61: fclose@@GLIBC_2.2.5 (iofclose.c:58)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9200 is 192 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 4 of 28:
+==6784== Invalid read of size 1
+==6784==    at 0x48FB7F6: _IO_un_link (genops.c:54)
+==6784==    by 0x48FB7F6: _IO_default_finish (genops.c:618)
+==6784==    by 0x48EBD60: fclose@@GLIBC_2.2.5 (iofclose.c:57)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9140 is 0 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 5 of 28:
+==6784== Invalid read of size 8
+==6784==    at 0x48FB7E0: _IO_default_finish (genops.c:612)
+==6784==    by 0x48EBD60: fclose@@GLIBC_2.2.5 (iofclose.c:57)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9188 is 72 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 6 of 28:
+==6784== Invalid read of size 8
+==6784==    at 0x48FB7C7: _IO_default_finish (genops.c:609)
+==6784==    by 0x48EBD60: fclose@@GLIBC_2.2.5 (iofclose.c:57)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab91a0 is 96 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 7 of 28:
+==6784== Invalid read of size 8
+==6784==    at 0x48FB7B8: _IO_default_finish (genops.c:603)
+==6784==    by 0x48EBD60: fclose@@GLIBC_2.2.5 (iofclose.c:57)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9178 is 56 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 8 of 28:
+==6784== Invalid read of size 4
+==6784==    at 0x48F907D: _IO_file_finish@@GLIBC_2.2.5 (fileops.c:169)
+==6784==    by 0x48EBD60: fclose@@GLIBC_2.2.5 (iofclose.c:57)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab91b0 is 112 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 9 of 28:
+==6784== Invalid read of size 8
+==6784==    at 0x48EBD32: fclose@@GLIBC_2.2.5 (iofclose.c:57)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9218 is 216 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 10 of 28:
+==6784== Invalid write of size 8
+==6784==    at 0x48EBE20: _IO_acquire_lock_fct (libioP.h:884)
+==6784==    by 0x48EBE20: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9228 is 232 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 11 of 28:
+==6784== Invalid read of size 8
+==6784==    at 0x48EBD21: _IO_acquire_lock_fct (libioP.h:884)
+==6784==    by 0x48EBD21: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab91c8 is 136 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 12 of 28:
+==6784== Invalid read of size 4
+==6784==    at 0x48EBE0F: _IO_acquire_lock_fct (libioP.h:883)
+==6784==    by 0x48EBE0F: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9140 is 0 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 13 of 28:
+==6784== Invalid read of size 4
+==6784==    at 0x48F8F18: _IO_file_close_it@@GLIBC_2.2.5 (fileops.c:130)
+==6784==    by 0x48EBE0E: fclose@@GLIBC_2.2.5 (iofclose.c:53)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab91b0 is 112 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 14 of 28:
+==6784== Invalid write of size 8
+==6784==    at 0x48EBDEE: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9228 is 232 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 15 of 28:
+==6784== Invalid read of size 4
+==6784==    at 0x48EBDEB: fclose@@GLIBC_2.2.5 (iofclose.c:52)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9140 is 0 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 16 of 28:
+==6784== Invalid read of size 8
+==6784==    at 0x48EBDE4: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab91c8 is 136 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 17 of 28:
+==6784== Invalid read of size 8
+==6784==    at 0x48EBDCD: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9228 is 232 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 18 of 28:
+==6784== Invalid read of size 8
+==6784==    at 0x48EBDC6: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab91c8 is 136 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 19 of 28:
+==6784== Invalid read of size 4
+==6784==    at 0x48EBDB5: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9140 is 0 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 20 of 28:
+==6784== Invalid read of size 1
+==6784==    at 0x48FA334: _IO_un_link (genops.c:54)
+==6784==    by 0x48EBDB4: fclose@@GLIBC_2.2.5 (iofclose.c:49)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9140 is 0 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 1 errors in context 21 of 28:
+==6784== Invalid read of size 4
+==6784==    at 0x48EBCFB: fclose@@GLIBC_2.2.5 (iofclose.c:48)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9140 is 0 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 2 errors in context 22 of 28:
+==6784== Invalid read of size 4
+==6784==    at 0x48EBD28: _IO_acquire_lock_fct (libioP.h:884)
+==6784==    by 0x48EBD28: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9224 is 228 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 2 errors in context 23 of 28:
+==6784== Invalid read of size 4
+==6784==    at 0x48EBDF2: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9224 is 228 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 2 errors in context 24 of 28:
+==6784== Invalid read of size 4
+==6784==    at 0x48EBDDA: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9220 is 224 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 3 errors in context 25 of 28:
+==6784== Invalid read of size 4
+==6784==    at 0x48EBE28: _IO_acquire_lock_fct (libioP.h:884)
+==6784==    by 0x48EBE28: fclose@@GLIBC_2.2.5 (iofclose.c:51)
+==6784==    by 0x1094D9: exiting_program (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x109551: handle_sigint (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==    by 0x48AF51F: ??? (in /usr/lib/x86_64-linux-gnu/libc.so.6)
+==6784==    by 0x49945D6: accept (accept.c:26)
+==6784==    by 0x109905: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Address 0x4ab9220 is 224 bytes inside a block of size 472 free'd
+==6784==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EBDA6: _IO_deallocate_file (libioP.h:862)
+==6784==    by 0x48EBDA6: fclose@@GLIBC_2.2.5 (iofclose.c:74)
+==6784==    by 0x109C08: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Block was alloc'd at
+==6784==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48EC6CD: __fopen_internal (iofopen.c:65)
+==6784==    by 0x48EC6CD: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+==6784==    by 0x109AC2: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 19 errors in context 26 of 28:
+==6784== Conditional jump or move depends on uninitialised value(s)
+==6784==    at 0x484ED28: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x109B9B: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Uninitialised value was created by a stack allocation
+==6784==    at 0x10955C: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 19 errors in context 27 of 28:
+==6784== Conditional jump or move depends on uninitialised value(s)
+==6784==    at 0x484ED28: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x109B78: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Uninitialised value was created by a stack allocation
+==6784==    at 0x10955C: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== 
+==6784== 19 errors in context 28 of 28:
+==6784== Conditional jump or move depends on uninitialised value(s)
+==6784==    at 0x484ED28: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==6784==    by 0x48ECA98: fputs (iofputs.c:33)
+==6784==    by 0x109A4C: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784==  Uninitialised value was created by a stack allocation
+==6784==    at 0x10955C: main (in /home/ruigomes/Documents/learning_linux/assignment-1-rui-mv-gomes-28/server/aesdsocket)
+==6784== 
+==6784== ERROR SUMMARY: 87 errors from 28 contexts (suppressed: 0 from 0)
